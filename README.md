@@ -1,11 +1,11 @@
-# myplace
+# myPlace
 ## A place where you can find your place.
 Welcome to myPlace! This is a place where you can find your place! 
 It's called myplace and not your place because when you are in myPlace this place is your place! 
 So when you are here, you will feel like this is "my" place (My as in you when you are considering this to be your own).
 You can customize your experience here and find what ti is that interests and drives you.
 
-#This is my personal project. It will be updated soon.
+# This is my personal project. It will be updated soon.
 I have ideas about how the profile system is going to work out but I don't want to add them yet.
 I still need to get the damn redux state to transfer through all of the components.
 
@@ -21,6 +21,8 @@ priority over others, and that would mean that you wouldn't get the full experie
 just from the fact that it will point something somewhere but I doubt it and I don't really care because that's not the point.
 
 I still suck pretty bad so this will probably take a while (but i get just a little (sometimes a lot) better everyday), although it seems like I learn something new literally everyday when i'm working on this.
+
+Teh cool part of this, is that as i'm going to design it so that it will be just as useful with one person as it will be with many people.
 
 Thanks for stopping by!
 -Greg.
