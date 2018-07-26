@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 
 const mapStateToProps = (state) => {
    return {
-     loggedIn : state.logReducer
+     loggedIn : state.loggedIn
    }
 };
 

@@ -18,6 +18,7 @@ class ProfilePage extends Component {
       <br/>
       {this.state.response}
       </p>
+      {this.props.loggedIn && <button onClick={this.props.logOff}>LogOut</button>}
    </div>
    );   
  }

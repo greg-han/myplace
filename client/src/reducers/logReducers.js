@@ -1,12 +1,12 @@
-const logReducers = (state = false, action) => {
+const logReducers = (state = {loggedIn : true}, action) => {
  switch(action.type){
    case 'LOG_ON':
-      return true
+      return {loggedIn : true}
    case 'LOG_OFF':
-      return false
+      return {loggedIn : false}
    default:
       return state 
- }
+  }
 }
 
 export default logReducers 

@@ -6,7 +6,7 @@ import SearchPage from '../components/SearchPage';
 
 const mapStateToProps = (state) => {
    return {
-     loggedIn : state.logReducer
+     loggedIn : state.loggedIn
    }
 };
 

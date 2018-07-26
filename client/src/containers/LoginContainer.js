@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import Login from '../components/Login';
 
 
+//This is fine if you pass in loggedIn : true, but reducer doesn'//work
 const mapStateToProps = (state) => {
    return {
-     loggedIn : state.logReducers
-   }
+     loggedIn : state.loggedIn
+   };
 };
 
 const mapDispatchToProps = (dispatch) => {

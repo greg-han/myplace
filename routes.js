@@ -80,13 +80,15 @@ const User = require('./db/user');
     let logged = {"username" : '', loggedIn : false }
     User.findOne({ username : req.body.username }, function(err, doc){
 	if(err) return done(err);
-	if(doc){
+	if(doc && doc.password == req.body.password){
+	  console.log("doc",doc);
 	  logged.loggedIn = true;
 	  logged.username = req.body.username
 	  console.log("Found",doc);
           return done(null,res.json(logged))
 	} 
 	else{
+           console.log("Didn't log in")
 	   logged.loggedIn = false;
            return done(null,res.json(logged));
        }

@@ -20,18 +20,7 @@ const login = {
 
 
 class Login extends Component {
-constructor(props){
- super(props);
- //I Know this defeats the purpose of using redux, but
- //I need to test the async fetch (remove later)
- this.state = {
-  logged : false 
- } 
-}
-changeLog = () => {
-  this.state.logged ? this.props.logOn() : this.props.logOff();
-  console.log("In here",this.props.loggedIn);
-}
+
 postLogin = (event) => {
   if(event) event.preventDefault();
   const luser = this.lusername.value;
@@ -50,8 +39,13 @@ postLogin = (event) => {
     }
     ).then(function(value){ 
        return value.json()})
-    .then(data => this.setState({ logged : data.loggedIn})) 
-    this.changeLog()
+    .then(function(data){
+       if(data.loggedIn){
+         this.props.logOn()}
+       if(!data.loggedIn){
+	 this.props.logOff()}
+      }.bind(this)
+    )	     
 }
 
 postRegister = (event) => { 
@@ -85,7 +79,7 @@ render(){
        <br />
        <input ref={(elem) => {this.password = elem}} type="password" placeholder="password" />
        <br />
-       <button type="submit">Login</button>
+       <button type="submit">Register</button>
      </form>
 
      <form style={login} onSubmit={this.postLogin}>
@@ -94,7 +88,7 @@ render(){
        <br />
        <input ref={(elem) => {this.lpassword = elem}} type="password" placeholder="password" />
        <br />
-       <button type="submit">Register</button>
+       <button type="submit">Login</button>
      </form>
    </div>
    );

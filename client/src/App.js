@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './App.css';
 import NavBarContainer from  './containers/NavBarContainer.js';
-import logReducers from './reducers/logReducers'
+import logReducers from './reducers/logReducers.js'
 import Homepage from './components/Homepage.js';
 import ProfilePageContainer from './containers/ProfilePageContainer.js';
 import SearchPageContainer from './containers/SearchPageContainer.js';
@@ -17,7 +17,7 @@ class App extends Component {
     return (
      <Provider store={store}>
       <Router>
-      <div>
+        <div>
         <NavBarContainer />
 	 <Switch>  
           <Route exact path="/" component={Homepage} />
@@ -25,7 +25,7 @@ class App extends Component {
           <Route exact path="/SearchPage" component={SearchPageContainer} />	 
          <Route exact path="/LoginPage" component={LoginContainer} />
 	 </Switch>
-      </div>
+	 </div>
       </Router>
      </Provider>
     );

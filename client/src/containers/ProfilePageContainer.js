@@ -7,7 +7,7 @@ import ProfilePage from '../components/ProfilePage';
 
 const mapStateToProps = (state) => {
    return {
-     loggedIn : state.logReducer
+     loggedIn : state.loggedIn
    }
 };
 
