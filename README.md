@@ -20,9 +20,9 @@ Probably because it doesn't have much of a commercial purpose. I can't see how i
 priority over others, and that would mean that you wouldn't get the full experience that you should. Maybe if it ever has more than one user (me) then it can generate something
 just from the fact that it will point something somewhere but I doubt it and I don't really care because that's not the point.
 
-I still suck pretty bad so this will probably take a while (but i get just a little (sometimes a lot) better everyday), although it seems like I learn something new literally everyday when i'm working on this.
+I still suck pretty bad so this will probably take a while lol (but i get just a little (sometimes a lot) better everyday), although it seems like I learn something new literally everyday when i'm working on this.
 
-Teh cool part of this, is that as i'm going to design it so that it will be just as useful with one person as it will be with many people.
+Teh cool part of this, is that i'm going to design it so that it will be just as useful with one person as it will be with many people.
 
 Thanks for stopping by!
 -Greg.
