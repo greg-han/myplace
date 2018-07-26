@@ -30,6 +30,6 @@ Thanks for stopping by!
 * git clone or download (link above) and then `npm install`
 * cd to `myplace` and `npm start` to start the node server
 * then cd to `myplace/client` and `npm start` to start the react app.
-* Login: user the temporary account username : myplace, and pasword : myplacepassword to log in !
+* Login: user the temporary account username : Greg, and pasword : password to log in !
   You will notice a different UI experience depending on whether you are logged in or not
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
