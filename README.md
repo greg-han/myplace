@@ -27,7 +27,7 @@ Thanks for stopping by!
 -Greg.
 
 # Instructions
-* git clone or download (link above) and then `npm install`
+* git clone or download https://github.com/greg-han/myplace.git and then `npm install`
 * cd to `myplace` and `npm start` to start the node server
 * then cd to `myplace/client` and `npm start` to start the react app.
 * Login: user the temporary account username : Greg, and pasword : password to log in !
