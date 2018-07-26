@@ -7,7 +7,6 @@ You can customize your experience here and find what ti is that interests and dr
 
 # This is my personal project. It will be updated soon.
 I have ideas about how the profile system is going to work out but I don't want to add them yet.
-I still need to get the damn redux state to transfer through all of the components.
 
 The basic idea of this app will be a personal profile that is composed of your queries.
 Machine learning will the be used on the queries to find similar queries to your aggregate queries.
