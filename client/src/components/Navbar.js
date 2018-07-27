@@ -26,7 +26,7 @@ class Navbar extends Component {
         <Link to="/ProfilePage" className="nav-link"> Profile</Link>
       </li>
       <li className="nav-item">
-        <Link to="/LoginPage" className="nav-link"> Login </Link>
+      { !this.props.loggedIn && <Link to="/LoginPage" className="nav-link"> Login/Register</Link>}
       </li>
       <li className="nav-item dropdown">
       </li>

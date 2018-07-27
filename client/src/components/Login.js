@@ -9,15 +9,12 @@ const input = {
      }
 
 const register = {
-	 marginLeft: '30%',
-	 float: 'left'
+	 display: 'inline'
      }
 
 const login = {
-	 float: 'right',
-         marginRight: '30%'
+	 display: 'inline'
      }
-
 
 class Login extends Component {
 
@@ -74,23 +71,21 @@ postRegister = (event) => {
 
 render(){
     return( 
-   <div>
-     <form style={register} onSubmit={this.postRegister}>
-       Register<br />
-       <input ref={(elem) => {this.username = elem}} type="username" placeholder="username" />
-       <br />
-       <input ref={(elem) => {this.password = elem}} type="password" placeholder="password" />
-       <br />
-       <button type="submit">Register</button>
-     </form>
-
+   <div className="container">
+     <br />
      <form style={login} onSubmit={this.postLogin}>
-       Login<br/>
-       <input ref={(elem) => {this.lusername = elem}} type="username" placeholder="username" />
-       <br />
-       <input ref={(elem) => {this.lpassword = elem}} type="password" placeholder="password" />
-       <br />
-       <button type="submit">Login</button>
+       <h3>Login</h3><br/>
+       <input className="form-control" ref={(elem) => {this.lusername = elem}} type="text" placeholder="username" />
+       <input className="form-control" ref={(elem) => {this.lpassword = elem}} type="text" placeholder="password" />
+       <button className="btn btn-primary" type="submit">Login</button>
+     </form>
+     <br />
+     <br />
+     <form style={register} onSubmit={this.postRegister}>
+       <h3>Register</h3><br />
+       <input className="form-control" ref={(elem) => {this.username = elem}} type="text" placeholder="username" />
+       <input className="form-control" ref={(elem) => {this.password = elem}} type="text" placeholder="password" />
+       <button className="btn btn-primary" type="submit">Register</button>
      </form>
    </div>
    );

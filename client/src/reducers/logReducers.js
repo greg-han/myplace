@@ -1,4 +1,4 @@
-const logReducers = (state = {loggedIn : true}, action) => {
+const logReducers = (state = {loggedIn : false}, action) => {
  switch(action.type){
    case 'LOG_ON':
       return {loggedIn : true}

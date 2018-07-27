@@ -13,12 +13,15 @@ class ProfilePage extends Component {
  showprops = () => {
   console.log("props", this.props);
  }
+ returnGreet= () => {
+  return 'Hello ' + this.props.username + ' !'
+}
  render(){ 
    return(
     <div className="container">
     <h1>Profile</h1>
       <p>
-      This will be replaced by your profile.
+      {this.props.loggedIn && this.returnGreet() }
       <br/>
       </p>
       {this.props.loggedIn && <button onClick={this.logOffandDrop}>LogOut</button>}
