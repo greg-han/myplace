@@ -30,8 +30,11 @@ Thanks for stopping by!
 * git clone or download https://github.com/greg-han/myplace.git and then  cd to `myplace` and `myplace/client` then `npm install` in both directories.
 * cd to `myplace` and `npm start` to start the node server
 * then cd to `myplace/client` and `npm start` to start the react app.
-* There are two DB options right now, one in the cloud, and one locally. Just comment/uncomment them.
+* There are two DB options right now, one in the cloud, and one locally. Just comment/uncomment them to choose.
+  If running locally, install mongodb, then `sudo mongod`, after that, `mongo` then in the mongo terminal `use myplace` after
+  you create this db, comment out the one in the cloud and uncomment the local one. Change the port to whatever port your       running mongo server is running on (You can find it in the terminal that you are running `mongod` from).
+* Username : You should notice a username in the redux store. This is persistent throughout the program (with redux) and can be used for     w/e. Mosty for `findOne` CRUD operations throught the different components.
 * Login: user the temporary account username : Greg, and pasword : password to log in !
-  You will notice a different UI experience depending on whether you are logged in or not
+  You will notice a different UI experience depending on whether you are logged in or not (Persistent Redux state throughout the program).
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
 * Search: This is almost added, for now it shoudl just save your queries into the database. Will debug soon.
