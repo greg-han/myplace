@@ -48,6 +48,7 @@ if (cluster.isMaster){
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://greg:gregdb1@ds231501.mlab.com:31501/myplace',{ useNewUrlParser : true});
+//mongoose.connect('mongodb://localhost:27017/myplace',{ userNewUrlParser : true});
 mongoose.Promise = global.Promise;
 
 const User = require('./db/user');
@@ -84,7 +85,6 @@ const User = require('./db/user');
 	  console.log("doc",doc);
 	  logged.loggedIn = true;
 	  logged.username = req.body.username
-	  console.log("Found",doc);
           return done(null,res.json(logged))
 	} 
 	else{
@@ -95,12 +95,44 @@ const User = require('./db/user');
    });
  });
 
+app.post('/api/searchBar', function(req, res, done){
+    console.log("In post")
+   //console.log("In post", req.body.username, req.body.search);
+  /* User.findOneAndUpdate({ username : req.body.username },{ $push: { searches : req.body.search}} , function(err, doc){
+     if(err) return done(err);
+     if(doc){
+       console.log("In here");
+       return done(null,res.json(doc))
+      }
+     else{
+      return done(null,res.json(doc))
+     }
+  });*/
+
+ }
+)
+/*
+app.post('/api/ProfilePage',function(req, res, done){
+   let searches = {"searchterms" : []}
+   User.findOne({ username : req.body.username } , function(err, doc){
+     if(err) return done(err);
+     if(doc){
+       searches.searchterms =  doc.searches 
+       return done(null,res.json(searches))
+      }
+     else{
+      return done(null,res.json(searches))
+     }
+  });
+ }
+)*/
 //Logout
-  app.get('/api/Logout',
+//This logic seems to be handled fine by redux
+/*  app.get('/api/Logout',
     function(req, res){
       res.json({"username" : '', loggedIn : false});
     });
-
+*/
  /* app.get('/api/ProfilePage',
     function(req, res){
       console.log("In the profile page");

@@ -41,7 +41,9 @@ postLogin = (event) => {
        return value.json()})
     .then(function(data){
        if(data.loggedIn){
-         this.props.logOn()}
+         this.props.logOn()
+         this.props.loadUser(String(this.lusername.value))
+       }
        if(!data.loggedIn){
 	 this.props.logOff()}
       }.bind(this)

@@ -4,13 +4,17 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './App.css';
 import NavBarContainer from  './containers/NavBarContainer.js';
+import allReducers from './reducers/allReducers.js'
 import logReducers from './reducers/logReducers.js'
+import userReducer from './reducers/userReducer.js'
 import Homepage from './components/Homepage.js';
 import ProfilePageContainer from './containers/ProfilePageContainer.js';
 import SearchPageContainer from './containers/SearchPageContainer.js';
 import LoginContainer from './containers/LoginContainer.js';
  
-let store = createStore(logReducers);
+//let store = createStore(userReducer);
+let store = createStore(allReducers);
+//let store = createStore(logReducers);
 
 class App extends Component { 
   render() {

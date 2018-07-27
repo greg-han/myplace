@@ -4,11 +4,15 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../../node_modules/jquery/dist/jquery.min.js';
 //import Login from './Login';
 
-
 class ProfilePage extends Component {
-  state = {
-    response: ''
-  };
+ logOffandDrop = () =>{
+  console.log("I am in this function");
+  this.props.logOff()
+  this.props.dropUser()
+ }
+ showprops = () => {
+  console.log("props", this.props);
+ }
  render(){ 
    return(
     <div className="container">
@@ -16,9 +20,9 @@ class ProfilePage extends Component {
       <p>
       This will be replaced by your profile.
       <br/>
-      {this.state.response}
       </p>
-      {this.props.loggedIn && <button onClick={this.props.logOff}>LogOut</button>}
+      {this.props.loggedIn && <button onClick={this.logOffandDrop}>LogOut</button>}
+      {false && <button onClick={this.showprops}>ShowProps</button>}
    </div>
    );   
  }

@@ -9,9 +9,9 @@ class SearchPage extends Component {
    return(
     <div className="container">
       <h1>Search Here</h1>
+      <p>Enter your query here. Make sure you are logged in!</p>
       {this.props.loggedIn && <Searchbar />}
       {!this.props.loggedIn && "Login to Search"}
-      <p>Enter your query here. Make sure you are logged in!</p>
     </div>
    );
  }
