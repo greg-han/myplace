@@ -27,9 +27,11 @@ Thanks for stopping by!
 -Greg.
 
 # Instructions
-* git clone or download https://github.com/greg-han/myplace.git and then `npm install`
+* git clone or download https://github.com/greg-han/myplace.git and then  cd to `myplace` and `myplace/client` then `npm install` in both directories.
 * cd to `myplace` and `npm start` to start the node server
 * then cd to `myplace/client` and `npm start` to start the react app.
+* There are two DB options right now, one in the cloud, and one locally. Just comment/uncomment them.
 * Login: user the temporary account username : Greg, and pasword : password to log in !
   You will notice a different UI experience depending on whether you are logged in or not
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
+* Search: This is almost added, for now it shoudl just save your queries into the database. Will debug soon.
