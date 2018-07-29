@@ -5,21 +5,18 @@ import { createStore } from 'redux';
 import './App.css';
 import NavBarContainer from  './containers/NavBarContainer.js';
 import allReducers from './reducers/allReducers.js'
-import logReducers from './reducers/logReducers.js'
-import userReducer from './reducers/userReducer.js'
 import Homepage from './components/Homepage.js';
 import ProfilePageContainer from './containers/ProfilePageContainer.js';
 import SearchPageContainer from './containers/SearchPageContainer.js';
 import LoginContainer from './containers/LoginContainer.js';
- 
-//let store = createStore(userReducer);
-let store = createStore(allReducers);
-//let store = createStore(logReducers);
+import { PersistGate } from 'redux-persist/integration/react'; 
+import { store, persistor } from './configureStore.js';
 
 class App extends Component { 
   render() {
     return (
      <Provider store={store}>
+     <PersistGate loading={null} persistor={persistor}>
       <Router>
         <div>
         <NavBarContainer />
@@ -31,6 +28,7 @@ class App extends Component {
 	 </Switch>
 	 </div>
       </Router>
+     </PersistGate>
      </Provider>
     );
   }

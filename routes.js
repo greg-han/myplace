@@ -53,6 +53,7 @@ mongoose.Promise = global.Promise;
 
 const User = require('./db/user');
 
+
 //Register/signup
  app.post('/api/Register', function(req, res, done){
        let regged; 
@@ -95,8 +96,10 @@ const User = require('./db/user');
    });
  });
 
-app.post('/api/searchBar', function(req, res, done){
-    console.log("In post")
+
+app.post('/api/SearchPage', function(req, res, done){
+   let stuff = {"username" : '', loggedIn : false }
+   return done(null,res.json(stuff));
    //console.log("In post", req.body.username, req.body.search);
   /* User.findOneAndUpdate({ username : req.body.username },{ $push: { searches : req.body.search}} , function(err, doc){
      if(err) return done(err);
@@ -108,9 +111,8 @@ app.post('/api/searchBar', function(req, res, done){
       return done(null,res.json(doc))
      }
   });*/
+ });
 
- }
-)
 /*
 app.post('/api/ProfilePage',function(req, res, done){
    let searches = {"searchterms" : []}

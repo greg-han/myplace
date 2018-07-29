@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../../node_modules/jquery/dist/jquery.min.js';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import '../../node_modules/jquery/dist/jquery.min.js';
 //import Login from './Login';
 
 class ProfilePage extends Component {
@@ -13,18 +16,18 @@ class ProfilePage extends Component {
  showprops = () => {
   console.log("props", this.props);
  }
- returnGreet= () => {
+ returnGreet = () => {
   return 'Hello ' + this.props.username + ' !'
-}
+ }
  render(){ 
    return(
     <div className="container">
     <h1>Profile</h1>
       <p>
-      {this.props.loggedIn && this.returnGreet() }
+      {this.props.loggedIn && this.returnGreet()}
       <br/>
       </p>
-      {this.props.loggedIn && <button onClick={this.logOffandDrop}>LogOut</button>}
+      {this.props.loggedIn && <button className="btn btn-primary" onClick={this.logOffandDrop}>LogOut</button>}
       {false && <button onClick={this.showprops}>ShowProps</button>}
    </div>
    );   

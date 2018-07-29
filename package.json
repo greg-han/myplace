@@ -27,6 +27,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-register": "^1.0.4",
+    "redux-persist": "^5.10.0",
     "yarn": "^1.7.0"
   },
   "devDependencies": {
