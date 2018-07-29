@@ -37,4 +37,4 @@ Thanks for stopping by!
 * Login: user the temporary account username : Greg, and pasword : password to log in !
   You will notice a different UI experience depending on whether you are logged in or not (Persistent Redux state throughout the program).
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
-* Search: This is almost added, for now it should be saving your queries into the database but I need to work on it for just a bit longer. Will debug soon.
+* Search: After logging in, Go to the search page and type a query. It will be saved to your profile.
