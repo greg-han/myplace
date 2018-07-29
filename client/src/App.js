@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import './App.css';
 import NavBarContainer from  './containers/NavBarContainer.js';
-import allReducers from './reducers/allReducers.js'
 import Homepage from './components/Homepage.js';
 import ProfilePageContainer from './containers/ProfilePageContainer.js';
 import SearchPageContainer from './containers/SearchPageContainer.js';

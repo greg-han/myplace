@@ -11,11 +11,11 @@ const userSchema  = new mongoose.Schema({
     default: ''
   },
   searches:  {
-    type: [Object],
+    type: [String],
     default: []
   },
   groups: {
-    type: [Object],
+    type: [String],
     default: []
   }
 });

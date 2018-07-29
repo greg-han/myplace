@@ -98,10 +98,8 @@ const User = require('./db/user');
 
 
 app.post('/api/SearchPage', function(req, res, done){
-   let stuff = {"username" : '', loggedIn : false }
-   return done(null,res.json(stuff));
-   //console.log("In post", req.body.username, req.body.search);
-  /* User.findOneAndUpdate({ username : req.body.username },{ $push: { searches : req.body.search}} , function(err, doc){
+   let stuff = {"search" : req.body.search, "username" : req.body.username}
+   User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { searches : String(req.body.search)}} , function(err, doc){
      if(err) return done(err);
      if(doc){
        console.log("In here");
@@ -110,7 +108,7 @@ app.post('/api/SearchPage', function(req, res, done){
      else{
       return done(null,res.json(doc))
      }
-  });*/
+  });
  });
 
 /*

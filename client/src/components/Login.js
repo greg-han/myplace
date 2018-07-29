@@ -22,7 +22,6 @@ postLogin = (event) => {
   if(event) event.preventDefault();
   const luser = this.lusername.value;
   const lpass = this.lpassword.value;
-  console.log("postdata",luser,lpass);
   fetch('/api/LoginPage', {
       headers : {
         "Accept" : 'application/json',
@@ -51,7 +50,6 @@ postRegister = (event) => {
   if(event) event.preventDefault();
   const user = this.username.value;
   const pass = this.password.value;
-  console.log("RegData",user,pass);
    fetch('/api/Register', {
       method : 'POST',
       body : JSON.stringify({

@@ -23,6 +23,7 @@ class SearchPage extends Component {
      }) 
    }
  } 
+
  searchBar = (event) => { 
    return (
         <form className="form-inline" onSubmit={this.addSearch}>
@@ -31,13 +32,14 @@ class SearchPage extends Component {
         </form> 
    );
  }
+
  render(){ 
    return(
     <div className="container">
       <h1>Search Here</h1>
       <p>Enter your query here. Make sure you are logged in!</p>
          {this.props.loggedIn && this.searchBar()}
-        {!this.props.loggedIn && "Login to Search"}
+         {!this.props.loggedIn && "Login to Search"}
     </div>
    );
  }
