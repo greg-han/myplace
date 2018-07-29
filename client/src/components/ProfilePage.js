@@ -55,12 +55,13 @@ class ProfilePage extends Component {
       <br/>
       </p>
       {this.props.loggedIn && <button className="btn btn-primary" onClick={this.logOffandDrop}>LogOut</button>}
-      
-      {this.props.searches.map((elem) =>
-		     <div> {elem} </div> 
-		      )
-         
-      }
+      <br/> <br />
+       <h2> Your Words </h2>     
+       <ul className="list-group list-group-flush">
+       {this.props.searches.map((elem,i) =>
+        <li className="list-group-item" key={i}> {elem} </li> 
+       )}
+      </ul>
    </div>
    );   
  }

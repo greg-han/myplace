@@ -97,7 +97,7 @@ app.post('/api/LoginPage', function(req, res, done){
 
 //This handles all searches done on the search page
 app.post('/api/SearchPage', function(req, res, done){
-   User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { searches : String(req.body.search)}} , function(err, doc){
+   User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { searches : req.body.search.toLowerCase()}} , function(err, doc){
      if(err) return done(err);
      if(doc){
        return done(null,res.json(doc))
