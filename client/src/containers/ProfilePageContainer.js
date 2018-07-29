@@ -4,19 +4,21 @@ import { loadUser } from '../actions/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { dropUser } from '../actions/actions';
+import { loadSearches } from '../actions/actions';
 import ProfilePage from '../components/ProfilePage';
 
 
 const mapStateToProps = (state) => {
    return {
      loggedIn : state.logReducers.loggedIn,
-     username : state.userReducer.username
+     username : state.userReducer.username,
+     searches : state.profileReducers.searches
    }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ...bindActionCreators({ logOn, logOff,loadUser, dropUser },dispatch)
+    ...bindActionCreators({ logOn, logOff,loadUser, dropUser, loadSearches },dispatch)
   }
 }
 

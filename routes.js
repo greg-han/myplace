@@ -43,7 +43,7 @@ if (cluster.isMaster){
   app.use(require('express-session')({ secret: 'keyboard cat', resave : false, saveUninitialized: false } ));
   app.use(flash());
 
-  //set default route. (React Router handles all the rest).
+//set default route. (React Router handles all the rest).
   app.use(express.static(path.join(__dirname, 'client/build')));
 
 const mongoose = require('mongoose');
@@ -55,7 +55,7 @@ const User = require('./db/user');
 
 
 //Register/signup
- app.post('/api/Register', function(req, res, done){
+app.post('/api/Register', function(req, res, done){
        let regged; 
        User.findOne({ username : req.body.username }, function(err, doc){
        if(err) return done(err);
@@ -78,31 +78,28 @@ const User = require('./db/user');
  });
 
 //Login!
- app.post('/api/LoginPage', function(req, res, done){
+//console.log("doc",doc);
+app.post('/api/LoginPage', function(req, res, done){
     let logged = {"username" : '', loggedIn : false }
     User.findOne({ username : req.body.username }, function(err, doc){
 	if(err) return done(err);
 	if(doc && doc.password == req.body.password){
-	  console.log("doc",doc);
 	  logged.loggedIn = true;
 	  logged.username = req.body.username
           return done(null,res.json(logged))
 	} 
 	else{
-           console.log("Didn't log in")
 	   logged.loggedIn = false;
            return done(null,res.json(logged));
        }
    });
  });
 
-
+//This handles all searches done on the search page
 app.post('/api/SearchPage', function(req, res, done){
-   let stuff = {"search" : req.body.search, "username" : req.body.username}
    User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { searches : String(req.body.search)}} , function(err, doc){
      if(err) return done(err);
      if(doc){
-       console.log("In here");
        return done(null,res.json(doc))
       }
      else{
@@ -111,37 +108,22 @@ app.post('/api/SearchPage', function(req, res, done){
   });
  });
 
-
+//Receives all of your searches (and soon your groups) on the page
 app.post('/api/ProfilePage',function(req, res, done){
-   let searches = {"searchterms" : []}
-   console.log("username", req.body.username)
    User.findOne({ username : req.body.username } , function(err, doc){
      if(err) return done(err);
      if(doc){
-       console.log("doc",doc.searches)
-       return done(null,res.json({"searchterms" : doc.searches } ))
+       return done(null,res.json(doc.searches))
       }
      else{
-      return done(null,res.json({"searchterms" : []}))
+      return done(null,res.json([]))
      }
   }); 
  }
 )
-//Logout
-//This logic seems to be handled fine by redux
-/*  app.get('/api/Logout',
-    function(req, res){
-      res.json({"username" : '', loggedIn : false});
-    });
-*/
- /* app.get('/api/ProfilePage',
-    function(req, res){
-      console.log("In the profile page");
-    });
- */
 
-  //uses default route as default get request. (REally just loads the app for reactx router).
-  app.get('*', (req, res) => {
+//uses default route as default get request. (REally just loads the app for reactx router).
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + 'client/build/index.html')    );
   });
 

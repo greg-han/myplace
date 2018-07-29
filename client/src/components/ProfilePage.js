@@ -32,17 +32,20 @@ class ProfilePage extends Component {
         method :  'POST',
         body : JSON.stringify({
         username : this.props.username
-     })}).then(function(value){
+     })})
+      .then(function(value){
          return value.json()})
-         .then(function(data){
-           console.log("SearchData", data)
-     }) 
+      .then(function(data){
+	 this.props.loadSearches(data)
+	 console.log("SearchesInRedux",this.props.searches)
+     }.bind(this)) 
   }
 }
 
  componentDidMount(){
   this.showProfile();
  }
+
  render(){ 
    return(
     <div className="container">
@@ -52,7 +55,12 @@ class ProfilePage extends Component {
       <br/>
       </p>
       {this.props.loggedIn && <button className="btn btn-primary" onClick={this.logOffandDrop}>LogOut</button>}
-      {false && this.props.loggedIn && <button onClick={this.showprops}>ShowProps</button>}
+      
+      {this.props.searches.map((elem) =>
+		     <div> {elem} </div> 
+		      )
+         
+      }
    </div>
    );   
  }
