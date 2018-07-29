@@ -8,16 +8,40 @@ import '../../node_modules/jquery/dist/jquery.min.js';
 //import Login from './Login';
 
 class ProfilePage extends Component {
+
  logOffandDrop = () =>{
-  console.log("I am in this function");
   this.props.logOff()
   this.props.dropUser()
  }
+
  showprops = () => {
   console.log("props", this.props);
  }
+
  returnGreet = () => {
   return 'Hello ' + this.props.username + ' !'
+ }
+
+ showProfile = () => {
+    if(this.props.loggedIn){
+      fetch('/api/ProfilePage', {
+        headers : {
+          "Accept" : "application/json",
+          "Content-Type" : "application/json"       
+        },
+        method :  'POST',
+        body : JSON.stringify({
+        username : this.props.username
+     })}).then(function(value){
+         return value.json()})
+         .then(function(data){
+           console.log("SearchData", data)
+     }) 
+  }
+}
+
+ componentDidMount(){
+  this.showProfile();
  }
  render(){ 
    return(
@@ -28,7 +52,7 @@ class ProfilePage extends Component {
       <br/>
       </p>
       {this.props.loggedIn && <button className="btn btn-primary" onClick={this.logOffandDrop}>LogOut</button>}
-      {false && <button onClick={this.showprops}>ShowProps</button>}
+      {false && this.props.loggedIn && <button onClick={this.showprops}>ShowProps</button>}
    </div>
    );   
  }

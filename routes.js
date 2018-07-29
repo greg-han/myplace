@@ -111,21 +111,22 @@ app.post('/api/SearchPage', function(req, res, done){
   });
  });
 
-/*
+
 app.post('/api/ProfilePage',function(req, res, done){
    let searches = {"searchterms" : []}
+   console.log("username", req.body.username)
    User.findOne({ username : req.body.username } , function(err, doc){
      if(err) return done(err);
      if(doc){
-       searches.searchterms =  doc.searches 
-       return done(null,res.json(searches))
+       console.log("doc",doc.searches)
+       return done(null,res.json({"searchterms" : doc.searches } ))
       }
      else{
-      return done(null,res.json(searches))
+      return done(null,res.json({"searchterms" : []}))
      }
-  });
+  }); 
  }
-)*/
+)
 //Logout
 //This logic seems to be handled fine by redux
 /*  app.get('/api/Logout',
