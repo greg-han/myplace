@@ -72,12 +72,19 @@ fetch(url,{
       </p>
       {this.props.loggedIn && <button className="btn btn-primary" onClick={this.logOffandDrop}>LogOut</button>}
       <br/> <br />
+      <div className="row">
+      <div className="col-lg-6">
        <h2> Your Words </h2>     
        <ul className="list-group list-group-flush">
        {this.props.searches.map((elem,i) =>
         <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
        )}
       </ul>
+      </div>
+      <div className="col-lg-6">
+      <h2> Your Groups </h2>
+      </div>
+      </div>
    </div>
    );   
  }
