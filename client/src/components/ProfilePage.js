@@ -37,9 +37,25 @@ class ProfilePage extends Component {
          return value.json()})
       .then(function(data){
 	 this.props.loadSearches(data)
-	 console.log("SearchesInRedux",this.props.searches)
      }.bind(this)) 
   }
+}
+//removes the query from both the page and your database
+close = (event) => {
+if(event) event.preventDefault();
+const value = this.props.searches[event.target.id];
+const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
+console.log("Value",url);
+fetch(url,{
+  method : "POST",
+  headers : {"Content-Type" : "application/json"}	
+  })
+  .then(function(value){
+    return value.json()})
+  .then(function(data){
+    console.log("props",this.props.searches)	
+  }.bind(this))
+ this.showProfile();
 }
 
  componentDidMount(){
@@ -59,7 +75,7 @@ class ProfilePage extends Component {
        <h2> Your Words </h2>     
        <ul className="list-group list-group-flush">
        {this.props.searches.map((elem,i) =>
-        <li className="list-group-item" key={i}> {elem} </li> 
+        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
        )}
       </ul>
    </div>

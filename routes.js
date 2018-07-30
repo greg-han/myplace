@@ -122,6 +122,22 @@ app.post('/api/ProfilePage',function(req, res, done){
  }
 )
 
+app.post('/api/ProfilePage/:word/:username',  function(req, res, done){
+   console.log("I'm in this get method")
+   let word = req.params.word 
+   let user = req.params.username
+   User.update({ username : user }, { '$pull' : { "searches" : word }}, function(err,doc){
+     if(err) return done(err);
+     if(doc){
+       return done(null,res.json(doc))
+     }
+     else{
+       return done(null,res.json(doc))
+     }
+   })
+  }
+)
+
 //uses default route as default get request. (REally just loads the app for reactx router).
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + 'client/build/index.html')    );

@@ -5,7 +5,7 @@ import '../../node_modules/jquery/dist/jquery.min.js';
  
 class SearchPage extends Component {
   addSearch = (event) => {
-    if(this.props.loggedIn){
+    if(this.props.loggedIn && this.search.value){
       //fetch('http://localhost/api/SearchPage', {
       fetch('/api/SearchPage', {
         headers : {
