@@ -38,3 +38,4 @@ Thanks for stopping by!
   You will notice a different UI experience depending on whether you are logged in or not (Persistent Redux state throughout the program).
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
 * Search: After logging in, Go to the search page and type a query. It will be saved to your profile.
+* Remove Query: click on the x on the right of your query term in your profile to delete that query from your profile.
