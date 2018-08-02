@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../../node_modules/jquery/dist/jquery.min.js';
+
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
 	host: 'localhost:9200',
@@ -9,6 +10,13 @@ var client = new elasticsearch.Client({
 });
 
 class Groups extends Component {
+constructor(props){
+ super(props);
+ this.state = {
+   results : [],
+   hits : {}
+ }
+}
 
 loadQueries = () => {
  let searches = this.props.searches.join(" "); 
@@ -16,15 +24,15 @@ loadQueries = () => {
 }
 
 displayURLs = (objs) => {
- let addrs = [];
- for(let p in objs){
-   addrs.push(p.url)
-  } 
-console.log("addrs",addrs);
+ for(let i = 0; i < 10; i++){
+  this.state.results.push(objs[i]._source.url)
+ }
+ console.log("Results",this.state.results)
 }
 
-loadSearch = () => {
-  client.search({
+async componentWillMount(){
+ try {
+  const result = await client.search({
     index : 'myplace',
     type : 'text',
     body : {
@@ -34,26 +42,25 @@ loadSearch = () => {
 	  }
 	}
       }
-  })
-  .then(function (res) {
-     var hits = res.hits.hits;
-     console.log("HITS",hits)
-  }, function(err){
-       console.trace(err.message);
-});
+  });
+  const json = await result.hits.hits;
+  let hits = [];
+  for(let i = 0; i < 10; i++){
+   hits.push(json[i]._source.url)
+  }
+ this.setState({ results : hits });
+ } catch(error){
+   console.log(error)
+  }
 }
-componentDidMount(){
- this.loadSearch();
-}
+
  render(){ 
    return(
     <div className="container">
-    <h1>Groups</h1>
-       { false && this.props.searches.map((elem,i) =>
-        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
-       )}
-    <p></p>
-   </div>
+      <h1>Groups</h1>
+      {this.state.results}
+      {this.state.results.map((elem) => console.log("elem",elem))}
+    </div>
    );   
  }
 }
