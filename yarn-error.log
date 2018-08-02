@@ -1,0 +1,61 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add bcrypt@3.0.0
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.9.2
+
+Node version: 
+  10.8.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/home/gman/myplace/node_modules/concurrently/node_modules/has-flag'
+
+npm manifest: 
+  {
+    "name": "myplace",
+    "version": "1.0.0",
+    "description": "The start of my app",
+    "main": "index.js",
+    "scripts": {
+      "start": "node routes.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Gregory Han",
+    "license": "GPL-3.0",
+    "dependencies": {
+      "bcrypt": "^3.0.0",
+      "bcrypt-nodejs": "0.0.3",
+      "body-parser": "^1.18.3",
+      "connect-ensure-login": "^0.1.1",
+      "connect-flash": "^0.1.1",
+      "cookie-parser": "^1.4.3",
+      "cors": "^2.8.4",
+      "ejs": "^2.6.1",
+      "elasticsearch": "^15.1.1",
+      "express": "^4.16.3",
+      "express-session": "^1.15.6",
+      "logger": "0.0.1",
+      "mongodb": "^3.1.1",
+      "morgan": "^1.9.0",
+      "passport": "^0.4.0",
+      "passport-local": "^1.0.0",
+      "passport-local-register": "^1.0.4",
+      "redux-persist": "^5.10.0",
+      "yarn": "^1.7.0"
+    },
+    "devDependencies": {
+      "concurrently": "^3.6.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
