@@ -13,21 +13,13 @@ class Groups extends Component {
 constructor(props){
  super(props);
  this.state = {
-   results : [],
-   hits : {}
+   results : []
  }
 }
 
 loadQueries = () => {
  let searches = this.props.searches.join(" "); 
  return searches;
-}
-
-displayURLs = (objs) => {
- for(let i = 0; i < 10; i++){
-  this.state.results.push(objs[i]._source.url)
- }
- console.log("Results",this.state.results)
 }
 
 async componentWillMount(){
@@ -58,7 +50,11 @@ async componentWillMount(){
    return(
     <div className="container">
       <h1>Groups</h1>
-      {this.state.results}
+       <ul className="list-group list-group-flush">
+       {this.state.results.map((elem,i) =>
+        <li className="list-group-item list-group-item-action" key={i}> <a href={elem} target='_blank'>Result</a> </li>
+       )}
+      </ul>
       {this.state.results.map((elem) => console.log("elem",elem))}
     </div>
    );   
