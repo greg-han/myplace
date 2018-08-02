@@ -12,7 +12,8 @@ import Groups from '../components/Groups';
 const mapStateToProps = (state) => {
    return {
      loggedIn : state.logReducers.loggedIn,
-     username : state.userReducer.username
+     username : state.userReducer.username,
+     searches : state.profileReducers.searches
    };
 };
 

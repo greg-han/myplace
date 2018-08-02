@@ -9,17 +9,31 @@ var client = new elasticsearch.Client({
 });
 
 class Groups extends Component {
+
+loadQueries = () => {
+ let searches = this.props.searches.join(" "); 
+ return searches;
+}
+
+displayURLs = (objs) => {
+ let addrs = [];
+ for(let p in objs){
+   addrs.push(p.url)
+  } 
+console.log("addrs",addrs);
+}
+
 loadSearch = () => {
   client.search({
     index : 'myplace',
     type : 'text',
     body : {
       query : {
-	match : {
-	  body : 'ted'
+	 "match" : {
+            "transcript" : this.loadQueries()
+	  }
 	}
       }
-    }
   })
   .then(function (res) {
      var hits = res.hits.hits;
@@ -29,12 +43,15 @@ loadSearch = () => {
 });
 }
 componentDidMount(){
-  this.loadSearch();
+ this.loadSearch();
 }
  render(){ 
    return(
     <div className="container">
     <h1>Groups</h1>
+       { false && this.props.searches.map((elem,i) =>
+        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
+       )}
     <p></p>
    </div>
    );   
