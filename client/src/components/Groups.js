@@ -9,12 +9,23 @@ var client = new elasticsearch.Client({
 	log: 'trace'
 });
 
+var metadata = require('metafetch');
+
 class Groups extends Component {
 constructor(props){
  super(props);
  this.state = {
-   results : []
+   results : [],
+   meta : []
  }
+ this.loadMeta = this.loadMeta.bind(this);
+}
+
+
+async loadMeta(url) {
+  let metaUrl = 'https://api.urlmeta.org/?url=' + url;
+  const meta = await fetch(metaUrl)
+  return meta.json();
 }
 
 loadQueries = () => {
@@ -37,10 +48,17 @@ async componentWillMount(){
   });
   const json = await result.hits.hits;
   let hits = [];
+  let metArray = [];
   for(let i = 0; i < 10; i++){
    hits.push(json[i]._source.url)
+   metArray = await [...metArray,this.loadMeta(json[i]._source.url)]
   }
  this.setState({ results : hits });
+ for(let j = 0; j < 10; j++){
+  metArray[j].then(function(obj){
+    this.setState({ meta : [...this.state.meta,obj]})
+  }.bind(this))
+ }
  } catch(error){
    console.log(error)
   }
@@ -50,12 +68,19 @@ async componentWillMount(){
    return(
     <div className="container">
       <h1>Groups</h1>
-       <ul className="list-group list-group-flush">
-       {this.state.results.map((elem,i) =>
-        <li className="list-group-item list-group-item-action" key={i}> <a href={elem} target='_blank'>Result</a> </li>
-       )}
-      </ul>
-      {this.state.results.map((elem) => console.log("elem",elem))}
+      {this.getPreviews}
+      {console.log(this.state.meta)}
+      {this.state.meta.map((elem,i) =>
+	<div className="col-sm-4 col-md-3">
+	    <figure>
+	       <a href={elem.meta.url} target="_blank" className="thumbnail">
+	         <b>TED-Talks</b>
+		 <img src={elem.meta.image} />
+            <figcaption><strong>{elem.meta.title}</strong></figcaption>
+	       </a>
+	</figure>
+        </div>
+      )}
     </div>
    );   
  }
