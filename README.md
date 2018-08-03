@@ -39,3 +39,4 @@ Thanks for stopping by!
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
 * Search: After logging in, Go to the search page and type a query. It will be saved to your profile.
 * Remove Query: click on the x on the right of your query term in your profile to delete that query from your profile.
+* Groups: For now, simply navigate to the groups page and you will see a few TED Talks matched to your queries. (Using elasticsearch's full-text functionality including fuzzy search). Tweak your queries to watch it change! Much more coming soon. 
