@@ -5,6 +5,9 @@ It's called myplace and not your place because when you are in myPlace this plac
 So when you are here, you will feel like this is "my" place (My as in you when you are considering this to be your own).
 You can customize your experience here and find what ti is that interests and drives you.
 
+# At the moment, you can use this as a tool to browse your kaggle datasets.
+Have a kaggle CSV? OR any csv at all? bring it into the main directory `myplace` and modify `csvLoader.py` by changing `transcripts.csv` to whatever your csv file name is. Then search away! You could just use kibana, but this app saves your queries.
+
 # This is my personal project. It will be updated soon.
 I have ideas about how the profile system is going to work out but I don't want to add them yet.
 
