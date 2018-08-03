@@ -11,6 +11,22 @@ var client = new elasticsearch.Client({
 
 var metadata = require('metafetch');
 
+const thumbnail = {
+	display: 'block',
+	padding: '4px',
+	marginBottom : '20px',
+	lineHeight : '1.42857143',
+	backgroundColor : '#fff',
+	border: '1px solid #ddd',
+	borderRadius : '4px',
+	transition : 'border .2x ease-in-out',
+} 
+
+const thumbimage = {
+  maxHeight: '100%',
+  maxWidth: '100%'
+}
+
 class Groups extends Component {
 constructor(props){
  super(props);
@@ -70,17 +86,19 @@ async componentWillMount(){
       <h1>Groups</h1>
       {this.getPreviews}
       {console.log(this.state.meta)}
+      <div className="row">
       {this.state.meta.map((elem,i) =>
-	<div className="col-sm-4 col-md-3">
+	<div className="col-sm-4 col-md-3" >
+	       <a href={elem.meta.url} style={thumbnail} target="_blank" className="thumbnail">
 	    <figure>
-	       <a href={elem.meta.url} target="_blank" className="thumbnail">
-	         <b>TED-Talks</b>
-		 <img src={elem.meta.image} />
+	    <b>TED-Talks</b>
+		 <img style={thumbimage} src={elem.meta.image} />
             <figcaption><strong>{elem.meta.title}</strong></figcaption>
-	       </a>
 	</figure>
+	       </a>
         </div>
       )}
+      </div>
     </div>
    );   
  }
