@@ -12,6 +12,7 @@ The basic idea of this app will be a personal profile that is composed of your q
 Machine learning will the be used on the queries to find similar queries to your aggregate queries.
 I'm not trying to build a search engine, this is different.
 
+
 The other part that i'm going to add is what will make this really unique and has almost nothign to do with questions, but will 
 have something to do with aggregating your profile data. I purposefully did not add it in here yet, because I want to design it fully
 before I add the components of it. It's nothing mindblowing or anything, it's just not really out in the mainstream right now.
