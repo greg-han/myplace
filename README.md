@@ -34,6 +34,8 @@ Thanks for stopping by!
 * There are two DB options right now, one in the cloud, and one locally. Just comment/uncomment them to choose.
   If running locally, install mongodb, then `sudo mongod`, after that, `mongo` then in the mongo terminal `use myplace` after
   you create this db, comment out the one in the cloud and uncomment the local one. Change the port to whatever port your       running mongo server is running on (You can find it in the terminal that you are running `mongod` from).
+* Until I get this hosted, if you actually want to run this you will need to install the full version of elasticsearch and set it up to start/stop in terminal. Oncd you've installed elastic search, make sure you have Python installed.
+  cd to `myplace` and run `python3 csvLoader.py`. It will automatically load the one and only DB that I have going right now into elasticsearch.
 * Username : You should notice a username in the redux store. This is persistent throughout the program (with redux) and can be used for     w/e. Mosty for `findOne` CRUD operations throught the different components.
 * Login: user the temporary account username : Greg, and pasword : password to log in !
   You will notice a different UI experience depending on whether you are logged in or not (Persistent Redux state throughout the program).
