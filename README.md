@@ -46,5 +46,5 @@ Thanks for stopping by!
 * Search: After logging in, Go to the search page and type a query. It will be saved to your profile.
 * Remove Query: click on the x on the right of your query term in your profile to delete that query from your profile.
 * Groups: For now, simply navigate to the groups page and you will see a few TED Talks matched to your queries. (Using elasticsearch's full-text functionality including fuzzy search). Tweak your queries to watch it change! Much more coming soon. (Maybe in the next 2 days or so).
-UPDATE: You will now see music results as well with song artist and lyrics (Using this dataset https://www.kaggle.com/mousehead/songlyrics ). The search engine goes through the song lyrics.
+UPDATE: You will now see music results as well with song artist and lyrics (Using this dataset https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics ). The search engine goes through the song lyrics.
 Ideally, I would like to have lyrics from very specific genres (Will be added soon), but i'm glad to have run across this dataset anyways.
