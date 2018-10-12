@@ -6,7 +6,7 @@ So when you are here, you will feel like this is "my" place (My as in you when y
 You can customize your experience here and find what ti is that interests and drives you.
 
 # At the moment, you can use this as a tool to browse your kaggle datasets.
-Have a kaggle CSV? OR any csv at all? Message me and i'll add it to the program.
+Have a kaggle CSV? OR any csv at all? Message me and i'll add it to the program and make some kind of card with the metadata.
  
 # This is my personal project. It will be updated soon.
 I have ideas about how the profile system is going to work out but I don't want to add them yet.
