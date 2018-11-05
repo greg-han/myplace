@@ -97,6 +97,8 @@ app.post('/api/LoginPage', function(req, res, done){
 
 //This handles all searches done on the search page
 app.post('/api/SearchPage', function(req, res, done){
+   console.log("group",req.body.groups)
+ if(!req.body.groups && req.body.search){
    User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { searches : req.body.search.toLowerCase()}} , function(err, doc){
      if(err) return done(err);
      if(doc){
@@ -106,6 +108,18 @@ app.post('/api/SearchPage', function(req, res, done){
       return done(null,res.json(doc))
      }
   });
+ }
+ if(!req.body.search && req.body.groups){
+   User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { groups : req.body.groups} } , function(err, doc){
+     if(err) return done(err);
+     if(doc){
+       return done(null,res.json(doc))
+      }
+     else{
+      return done(null,res.json(doc))
+     }
+  });
+  }
  });
 
 //Receives all of your searches (and soon your groups) on the page
@@ -113,7 +127,7 @@ app.post('/api/ProfilePage',function(req, res, done){
    User.findOne({ username : req.body.username } , function(err, doc){
      if(err) return done(err);
      if(doc){
-       return done(null,res.json(doc.searches))
+       return done(null,res.json({ 'searches' : doc.searches, 'groups' : doc.groups}))
       }
      else{
       return done(null,res.json([]))
@@ -123,19 +137,31 @@ app.post('/api/ProfilePage',function(req, res, done){
 )
 
 app.post('/api/ProfilePage/:word/:username',  function(req, res, done){
-   console.log("I'm in this get method")
    let word = req.params.word 
    let user = req.params.username
-   User.update({ username : user }, { '$pull' : { "searches" : word }}, function(err,doc){
-     if(err) return done(err);
-     if(doc){
-       return done(null,res.json(doc))
-     }
-     else{
-       return done(null,res.json(doc))
-     }
-   })
+   if(req.body.search){
+     User.update({ username : user }, { '$pull' : { "searches" : word }}, function(err,doc){
+       if(err) return done(err);
+       if(doc){
+         return done(null,res.json(doc))
+       }
+       else{
+         return done(null,res.json(doc))
+       }
+     })
+   }
+  if(req.body.group){
+     User.update({ username : user }, { '$pull' : { "groups" : word }}, function(err,doc){
+       if(err) return done(err);
+       if(doc){
+         return done(null,res.json(doc))
+       }
+       else{
+         return done(null,res.json(doc))
+       }
+    })
   }
+ }
 )
 
 //uses default route as default get request. (REally just loads the app for reactx router).

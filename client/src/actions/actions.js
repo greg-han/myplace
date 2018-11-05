@@ -2,7 +2,7 @@ const LOG_ON = 'LOG_ON'
 const LOG_OFF = 'LOG_OFF'
 const LOAD_USER = 'LOAD_USER'
 const DROP_USER = 'DROP_USER'
-const LOAD_SEARCHES = 'LOAD_SEARCHES'	
+const LOAD_PROFILE = 'LOAD_PROFILE'
 
 export const logOn = () => {
   return { type : LOG_ON } 
@@ -22,7 +22,9 @@ export const dropUser = () => {
 	   }
 }
 
-export const loadSearches = (searches) => {
-  return { type : LOAD_SEARCHES, 
-           searches : searches }
+export const loadProfile = (searches,groups) => {
+  return { type : LOAD_PROFILE,
+	   searches : searches,
+           groups : groups
+           }
 }

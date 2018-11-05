@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
    return {
      loggedIn : state.logReducers.loggedIn,
      username : state.userReducer.username,
-     searches : state.profileReducers.searches
+     searches : state.profileReducers.searches,
+     groups : state.profileReducers.groups
    };
 };
 

@@ -8,6 +8,13 @@ import '../../node_modules/jquery/dist/jquery.min.js';
 //import Login from './Login';
 
 class ProfilePage extends Component {
+constructor(props){
+ super(props);
+ this.state = {
+   sdata : [],
+   gdata : []
+ }
+}
 
  logOffandDrop = () =>{
   this.props.logOff()
@@ -21,8 +28,14 @@ class ProfilePage extends Component {
  returnGreet = () => {
   return 'Hello ' + this.props.username + ' !'
  }
+ 
+ loadProps = (searches,groups) => {
+	//if you call loadSearches, groups gets loaded
+	//if you call loadGroups, searches get loaded wtf?
+   this.props.loadProfile(searches,groups)
+ }
 
- showProfile = () => {
+ loadProfile = () => {
     if(this.props.loggedIn){
       fetch('/api/ProfilePage', {
         headers : {
@@ -36,7 +49,7 @@ class ProfilePage extends Component {
       .then(function(value){
          return value.json()})
       .then(function(data){
-	 this.props.loadSearches(data)
+	 this.loadProps(data.searches,data.groups)
      }.bind(this)) 
   }
 }
@@ -45,22 +58,50 @@ close = (event) => {
 if(event) event.preventDefault();
 const value = this.props.searches[event.target.id];
 const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
-console.log("Value",url);
+//console.log("Value",url);
 fetch(url,{
   method : "POST",
-  headers : {"Content-Type" : "application/json"}	
+  headers : {"Content-Type" : "application/json"},
+  body : JSON.stringify({
+    group: false,
+    search :true 
+   })
   })
   .then(function(value){
     return value.json()})
   .then(function(data){
     console.log("props",this.props.searches)	
   }.bind(this))
- this.showProfile();
+ this.loadProfile();
 }
 
- componentDidMount(){
-  this.showProfile();
+closeGroup = (event) => {
+if(event) event.preventDefault();
+const value = this.props.groups[event.target.id];
+const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
+//console.log("Value",url);
+fetch(url,{
+  method : "POST",
+  headers : {"Content-Type" : "application/json"},
+  body : JSON.stringify({
+    group: true,
+    search : false
+   })
+  })
+  .then(function(value){
+    return value.json()})
+  .then(function(data){
+    console.log("props",this.props.groups)	
+  }.bind(this))
+ this.loadProfile();
+}
+
+ componentWillMount(){
+  this.loadProfile();
  }
+      /* {this.props.searches.map((elem,i) =>
+        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
+       )}*/
 
  render(){ 
    return(
@@ -75,14 +116,17 @@ fetch(url,{
       <div className="row">
       <div className="col-lg-6">
        <h2> Your Words </h2>     
-       <ul className="list-group list-group-flush">
        {this.props.searches.map((elem,i) =>
         <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
        )}
+       <ul className="list-group list-group-flush">
       </ul>
       </div>
       <div className="col-lg-6">
       <h2> Your Groups </h2>
+       {this.props.groups.map((elem,i) =>
+        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.closeGroup} className="close">x</span></li> 
+       )}
       </div>
       </div>
    </div>

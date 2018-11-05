@@ -15,11 +15,33 @@ class SearchPage extends Component {
         method :  'POST',
         body : JSON.stringify({
         username : this.props.username,
-        search : this.search.value
+        search : this.search.value,
+        groups : false	
      })}).then(function(value){
          return value.json()})
          .then(function(data){
            console.log("SearchData", data)
+     }) 
+   }
+ } 
+  addGroup = (event) => {
+    console.log("This worked",this.group.value)
+    //let addgroup = group;
+    if(this.props.loggedIn){
+      fetch('/api/SearchPage', {
+        headers : {
+          "Accept" : "application/json",
+          "Content-Type" : "application/json"       
+        },
+        method :  'POST',
+        body : JSON.stringify({
+        username : this.props.username,
+        search : false,
+        groups : this.group.value
+     })}).then(function(value){
+         return value.json()})
+         .then(function(data){
+           console.log("GroupsData", data)
      }) 
    }
  } 
@@ -32,14 +54,38 @@ class SearchPage extends Component {
         </form> 
    );
  }
+ 
+groupsDropdown = (event) => {
+ return( 
+  <form onSubmit={this.addGroup}>
+    <select className="form-control form-control-md">
+      <option value='0' ref={(elem) => this.group = elem}>Groups</option>
+      <option value='TED' ref={(elem2) => this.group = elem2}>TED</option>
+      <option value='Music' ref={(elem) => this.group = elem}>Music</option>
+   </select>
+   <br/>
+   <button className="btn btn-outline-success my-2 my-sm-0" type="submit">ADD</button>
+   </form>
+  );
+}
 
  render(){ 
    return(
     <div className="container">
-      <h1>Search Here</h1>
-      <p>Enter your query here. Make sure you are logged in!</p>
-         {this.props.loggedIn && this.searchBar()}
-         {!this.props.loggedIn && "Login to Search"}
+      <div className="row"> 
+        <div className="col-lg-6">
+          <h1>Enter your Queries</h1>
+          <p>Enter your query here. Make sure you are logged in!</p>
+          {this.props.loggedIn && this.searchBar()}
+          {!this.props.loggedIn && "Login to Search"}
+	</div>
+        <div className="col-lg-6">
+          <h1>Choose Your Groups</h1>
+          <p>Choose your groups from the dropdown menu</p>
+          {this.props.loggedIn && this.groupsDropdown()}
+          {!this.props.loggedIn && "Login to add Groups"}
+	</div>
+      </div>
     </div>
    );
  }

@@ -4,7 +4,7 @@
   "description": "The start of my app",
   "main": "index.js",
   "scripts": {
-    "start": "node routes.js",
+    "start": "concurrently \"node routes.js\" \"cd client && npm start\" \"node cors.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gregory Han",
@@ -17,10 +17,12 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "cors-anywhere": "^0.4.1",
     "ejs": "^2.6.1",
     "elasticsearch": "^15.1.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "i": "^0.3.6",
     "logger": "0.0.1",
     "metafetch": "^1.8.2",
     "mongodb": "^3.1.1",
@@ -31,9 +33,10 @@
     "passport-local-register": "^1.0.4",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
+    "url-metadata": "^2.1.7",
     "yarn": "^1.7.0"
   },
   "devDependencies": {
-    "concurrently": "^3.6.0"
+    "concurrently": "^3.6.1"
   }
 }
