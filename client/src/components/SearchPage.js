@@ -24,8 +24,9 @@ class SearchPage extends Component {
      }) 
    }
  } 
+
   addGroup = (event) => {
-    console.log("This worked",this.group.value)
+    console.log("This worked",event.target.value)
     //let addgroup = group;
     if(this.props.loggedIn){
       fetch('/api/SearchPage', {
@@ -37,7 +38,7 @@ class SearchPage extends Component {
         body : JSON.stringify({
         username : this.props.username,
         search : false,
-        groups : this.group.value
+        groups : event.target.value
      })}).then(function(value){
          return value.json()})
          .then(function(data){
@@ -49,23 +50,20 @@ class SearchPage extends Component {
  searchBar = (event) => { 
    return (
         <form className="form-inline" onSubmit={this.addSearch}>
-          <input className="form-control mr-sm-2" ref={(elem) => this.search = elem}type="text" placeholder="query"  />
+          <input className="form-control mr-sm-2" ref={(element) => this.search = element}type="text" placeholder="query"  />
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
         </form> 
    );
  }
+
  
 groupsDropdown = (event) => {
  return( 
-  <form onSubmit={this.addGroup}>
-    <select className="form-control form-control-md">
-      <option value='0' ref={(elem) => this.group = elem}>Groups</option>
-      <option value='TED' ref={(elem2) => this.group = elem2}>TED</option>
-      <option value='Music' ref={(elem) => this.group = elem}>Music</option>
+    <select onChange={this.addGroup} ref={(groupelem) => this.group = groupelem} className="form-control form-control-md"> 
+      <option value='0'>Groups</option>
+      <option value='ted'>TED</option>
+      <option value='music'>Music</option>
    </select>
-   <br/>
-   <button className="btn btn-outline-success my-2 my-sm-0" type="submit">ADD</button>
-   </form>
   );
 }
 

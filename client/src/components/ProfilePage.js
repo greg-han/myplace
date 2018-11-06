@@ -30,8 +30,7 @@ constructor(props){
  }
  
  loadProps = (searches,groups) => {
-	//if you call loadSearches, groups gets loaded
-	//if you call loadGroups, searches get loaded wtf?
+   //put both searches and groups in state, so that both can be updated at the same time
    this.props.loadProfile(searches,groups)
  }
 
@@ -52,53 +51,56 @@ constructor(props){
 	 this.loadProps(data.searches,data.groups)
      }.bind(this)) 
   }
+  else{
+   this.loadProps([],[])
+ }
 }
 //removes the query from both the page and your database
 close = (event) => {
-if(event) event.preventDefault();
-const value = this.props.searches[event.target.id];
-const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
-//console.log("Value",url);
-fetch(url,{
-  method : "POST",
-  headers : {"Content-Type" : "application/json"},
-  body : JSON.stringify({
-    group: false,
-    search :true 
-   })
-  })
-  .then(function(value){
-    return value.json()})
-  .then(function(data){
-    console.log("props",this.props.searches)	
-  }.bind(this))
- this.loadProfile();
+  if(event) event.preventDefault();
+  const value = this.props.searches[event.target.id];
+  const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
+  //console.log("Value",url);
+  fetch(url,{
+    method : "POST",
+    headers : {"Content-Type" : "application/json"},
+    body : JSON.stringify({
+      group: false,
+      search :true 
+     })
+    })
+    .then(function(value){
+      return value.json()})
+    .then(function(data){
+      console.log("props",this.props.searches)	
+    }.bind(this))
+  this.loadProfile();
 }
 
 closeGroup = (event) => {
-if(event) event.preventDefault();
-const value = this.props.groups[event.target.id];
-const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
-//console.log("Value",url);
-fetch(url,{
-  method : "POST",
-  headers : {"Content-Type" : "application/json"},
-  body : JSON.stringify({
-    group: true,
-    search : false
-   })
-  })
-  .then(function(value){
-    return value.json()})
-  .then(function(data){
-    console.log("props",this.props.groups)	
-  }.bind(this))
- this.loadProfile();
+  if(event) event.preventDefault();
+  const value = this.props.groups[event.target.id];
+  const url = '/api/ProfilePage/' + value + "/" + this.props.username; 
+  //console.log("Value",url);
+  fetch(url,{
+    method : "POST",
+    headers : {"Content-Type" : "application/json"},
+    body : JSON.stringify({
+      group: true,
+      search : false
+     })
+    })
+    .then(function(value){
+      return value.json()})
+    .then(function(data){
+      console.log("props",this.props.groups)	
+    }.bind(this))
+  this.loadProfile();
 }
 
- componentWillMount(){
+componentWillMount(){
   this.loadProfile();
- }
+}
       /* {this.props.searches.map((elem,i) =>
         <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
        )}*/
@@ -116,19 +118,19 @@ fetch(url,{
       <div className="row">
       <div className="col-lg-6">
        <h2> Your Words </h2>     
-       {this.props.searches.map((elem,i) =>
-        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
-       )}
-       <ul className="list-group list-group-flush">
-      </ul>
+         {this.props.searches.map((elem,i) =>
+           <li ref={(elem) => {this.query = elem}} style={{borderStyle : 'none none none none'}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.close} className="close">x</span></li> 
+         )}
+         <ul className="list-group list-group-flush">
+         </ul>
       </div>
       <div className="col-lg-6">
-      <h2> Your Groups </h2>
-       {this.props.groups.map((elem,i) =>
-        <li ref={(elem) => {this.query = elem}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.closeGroup} className="close">x</span></li> 
-       )}
+        <h2> Your Groups </h2>
+          {this.props.groups.map((elem,i) =>
+            <li ref={(elem) => {this.query = elem}} style={{borderStyle : 'none none none none'}} className="list-group-item list-group-item-action" key={i}> {elem}<span id={i} onClick={this.closeGroup} className="close">x</span></li> 
+          )}
       </div>
-      </div>
+     </div>
    </div>
    );   
  }

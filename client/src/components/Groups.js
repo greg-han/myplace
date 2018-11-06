@@ -12,7 +12,7 @@ var client = new elasticsearch.Client({
 	log: 'trace'
 });
 */
-var metadata = require('metafetch');
+//var metadata = require('metafetch');
 const urlMetadata = require('url-metadata')
 
 const thumbnail = {
@@ -49,7 +49,7 @@ async loadMeta(url) {
   let metaUrl = 'http://localhost:9090/' + url;
   let meta = urlMetadata(metaUrl).then(
     function(metadata){
-      console.log("MetaData",metadata)
+      //console.log("MetaData",metadata)
       return metadata;
    },
    function (error) {
@@ -65,7 +65,7 @@ loadQueries = () => {
 
 updateTedState = (tedObj) => {
  this.setState({ tedArr : [...this.state.tedArr,tedObj]})
- console.log("tedArr",this.state.tedArr)
+ //console.log("tedArr",this.state.tedArr)
 }
 
 updateMusicState = (musicObj) => {
@@ -117,7 +117,7 @@ async populateAll(){
 const musicjson = await Musicresult.hits.hits;
 let musichits = [];
 for(let i = 0; i < 10; i++){
- console.log("MusicJSON", musicjson[i])
+ //console.log("MusicJSON", musicjson[i])
  musichits.push(musicjson[i])
 }
  this.updateMusicState(musichits) 
@@ -134,37 +134,37 @@ for(let i = 0; i < 10; i++){
       {this.getPreviews}
       <div className="container-fluid">
         <h3> TED </h3>
-      <div className="row flex-row flex-nowrap">
-      {this.state.tedArr.map((elem,i) =>
-	<div className="col-sm-4 col-md-3" >
-	       <a href={elem.canonical} style={thumbnail} target="_blank" className="thumbnail">
+        <div className="row flex-row flex-nowrap" style={{overflow : 'auto'}}>
+        {this.state.tedArr.map((elem,i) =>
+    	  <div className="col-sm-4 col-md-3" >
+	  <a href={elem.canonical} style={thumbnail} target="_blank" className="thumbnail">
 	    <figure>
-	    <b>TED-Talks</b>
-		 <img style={thumbimage} src={elem.image} />
-            <figcaption><strong>{elem.title}</strong></figcaption>
-	</figure>
-	       </a>
-        </div>
+	      <b>TED Talks</b>
+	      <img style={thumbimage} src={elem.image} />
+              <figcaption><strong>{elem.title}</strong></figcaption>
+	    </figure>
+	  </a>
+          </div>
       )}
       </div>
       </div>
-
+     <br />
      <div className="container-fluid">
        <h3> MUSIC </h3>
-      <div className="row flex-row flex-nowrap">
+      <div className="row flex-row flex-nowrap" style={{overflow : 'auto'}}>
       {this.state.MusicMeta.map((elem,i) =>
-	<div className="col-sm-4 col-md-3" >
-<a href={"http://www.google.com/search?q=" + elem._source.artist.replace(/-/g,' ') + " " + elem._source.song.replace(/-/g,' ')} style={thumbnail} target="_blank" className="thumbnail">
-	<figure>
-	<b>MUSIC SUGGESTION</b>
+	<div className="col-sm-4 col-md-3" id={i} >
+        <a href={"http://www.google.com/search?q=" + elem._source.artist.replace(/-/g,' ') + " " + elem._source.song.replace(/-/g,' ')} style={thumbnail} target="_blank" className="thumbnail">
+	  <figure>
+	    <b>Music Suggestions</b>
             <figcaption><strong style={{'fontSize' : '13px'}} >ARTIST: <br />{elem._source.artist.replace(/-/g," ")}</strong></figcaption>
             <figcaption><strong style={{'fontSize' : '13px'}}>SONG: <br / >{elem._source.song.replace(/-/g," ")}</strong></figcaption>
-	</figure>
-	       </a>
+	  </figure>
+	</a>
         </div>
       )}
-      </div>
      </div>
+    </div>
    </div>
    );   
  }
