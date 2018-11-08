@@ -1,6 +1,6 @@
 # myPlace
 # LIVE EXAMPLE (hosted on a Digital Ocean Droplet) : http://165.227.170.174:3000/
-## A place where you can find your place.
+# A place where you can find your place.
 Welcome to myPlace! This is a place where you can find your place! 
 It's called myplace and not your place because when you are in myPlace this place is your place! 
 So when you are here, you will feel like this is "my" place (My as in you when you are considering this to be your own).
