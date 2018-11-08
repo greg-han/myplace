@@ -1,5 +1,5 @@
 # myPlace
-# LIVE EXAMPLE : http://165.227.170.174:3000/
+# LIVE EXAMPLE (hosted on a Digital Ocean Droplet) : http://165.227.170.174:3000/
 ## A place where you can find your place.
 Welcome to myPlace! This is a place where you can find your place! 
 It's called myplace and not your place because when you are in myPlace this place is your place! 
