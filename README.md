@@ -1,5 +1,6 @@
 # myPlace
 # LIVE EXAMPLE (hosted on a Digital Ocean Droplet) : http://165.227.170.174:3000/
+## Login with username : Greg , password : password When you see the login dissappear from the navbar, you're in my profile. Take a look around and add/remove queries to see different results.
 * Note, this wont work if you're on a restricted network of some kind (like a school network).
   The UI works perfectly on phones, but the Groups seem very slow to load on mobile for some reason (will fix).
 # A place where you can find your place.
