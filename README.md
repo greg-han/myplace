@@ -5,9 +5,6 @@ Welcome to myPlace! This is a place where you can find your place!
 It's called myplace and not your place because when you are in myPlace this place is your place! 
 So when you are here, you will feel like this is "my" place (My as in you when you are considering this to be your own).
 You can customize your experience here and find what ti is that interests and drives you.
-
-# At the moment, you can use this as a tool to browse your kaggle datasets.
-Have a kaggle CSV? OR any csv at all? Message me and i'll add it to the program and make some kind of card with the metadata.
  
 # This is my personal project. It will be updated soon.
 I have ideas about how the profile system is going to work out but I don't want to add them yet.
@@ -52,3 +49,6 @@ I may configure it to automatically install them, but it would only apply to my 
 UPDATE: You will now see music results as well with song artist and lyrics (Using this dataset https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics ). The search engine goes through the song lyrics.
 Ideally, I would like to have lyrics from very specific genres (Will be added soon), but i'm glad to have run across this dataset anyways.
 * Remove Group: click on the x to the right of your group term in your profile to delete that group from your profile. Your Groups page will reflect your change and will only render groups that are in your profile.
+
+## At the moment, you can use this as a tool to browse your kaggle datasets.
+Have a kaggle CSV? OR any csv at all? Message me and i'll add it to the program and make some kind of card with the metadata.
