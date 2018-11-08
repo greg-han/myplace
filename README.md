@@ -22,6 +22,7 @@ I still suck pretty bad so this will probably take a while lol (but I get just a
 Teh cool part of this, is that I'm going to design it so that it will be just as useful with one person as it will be with many people.
 
 Thanks for stopping by!
+
 -Greg.
 
 # Instructions
