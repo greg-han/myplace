@@ -31,18 +31,19 @@ Thanks for stopping by!
 * Login: user the temporary account username : Greg, and pasword : password to log in !
   You will notice a different UI experience depending on whether you are logged in or not (Persistent Redux state throughout the program).
   ![Alt text](/images/login.png?raw=true "login")
-
+  
 * Add Query: After logging in, go to the search page and type a query. It will be saved to your profile.
 * Add Group: After logging in, go to the search page and select a group from the dropdown menu. It will be saved to your profile.
   ![Alt text](/images/query.png?raw=true "query")
   ![Alt text](/images/dropdown.png?raw=true "dropdown")
+  
 * Remove Query: click on the x on the right of your query term in your profile to delete that
 * Remove Group: click on the x to the right of your group term in your profile to delete that group from your profile. Your  query from your profile.
 * Logout : Go to your profile page and logout. This Logout button will only appear if you are logged in.
 ![Alt text](/images/profilepage.png?raw=true "profile")
-* Groups: Navigate to the Groups page to see your results! Groups page will reflect your change and will only render groups that are added to your profile. For now, there are only 2 groups (TED and Music).Over time, more groups will be added. Ideally, the groups should be added 
-![Alt text](/images/profilepage.png?raw=true "groups")
 
+* Groups: Navigate to the Groups page to see your results! Groups page will reflect your change and will only render groups that are added to your profile. For now, there are only 2 groups (TED and Music).Over time, more groups will be added. Ideally, the groups should be added 
+![Alt text](/images/groups.png?raw=true "groups")
 
 # Installation Instructions
 * git clone or download https://github.com/greg-han/myplace.git and then  cd to `myplace` and `myplace/client` then `npm install` in both directories. You may need to install more dependencies (as I did when my hard drive got wiped on accident).
