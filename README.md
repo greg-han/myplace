@@ -14,16 +14,12 @@ Machine learning will the be used on the queries to find similar queries to your
 I'm not trying to build a search engine, this is different.
 
 
-The other part that i'm going to add is what will make this really unique and has almost nothign to do with questions, but will 
-have something to do with aggregating your profile data. I purposefully did not add it in here yet, because I want to design it fully
-before I add the components of it. It's nothing mindblowing or anything, it's just not really out in the mainstream right now.
-Probably because it doesn't have much of a commercial purpose. I can't see how it would work with a commerical purpose because that would mean that some sites get
-priority over others, and that would mean that you wouldn't get the full experience that you should. Maybe if it ever has more than one user (me) then it can generate something
-just from the fact that it will point something somewhere but I doubt it and I don't really care because that's not the point.
+The other part that i'm going to add is what will make this really unique and has almost nothing to do with questions, but will have something to do with aggregating your profile data. I purposefully did not add it in here yet, because I want to design it fully before I add the components of it. It's nothing mindblowing or anything, it's just not really out in the mainstream right now (this may be because there is no immediate commercial need for it).
+I really want people to find clusters of information that are completely outside of the scope of their current knowledge base, but would somehow be related to something that they may like.
 
-I still suck pretty bad so this will probably take a while lol (but i get just a little (sometimes a lot) better everyday), although it seems like I learn something new literally everyday when i'm working on this.
+I still suck pretty bad so this will probably take a while lol (but I get just a little (sometimes a lot) better everyday), although it seems like I learn something new literally everyday when i'm working on this.
 
-Teh cool part of this, is that i'm going to design it so that it will be just as useful with one person as it will be with many people.
+Teh cool part of this, is that I'm going to design it so that it will be just as useful with one person as it will be with many people.
 
 Thanks for stopping by!
 -Greg.
