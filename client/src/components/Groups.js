@@ -3,18 +3,6 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import '../../node_modules/jquery/dist/jquery.min.js';
 
-var elasticsearch = require('elasticsearch');
-var client = new elasticsearch.Client({
-	host: 'localhost:9200',
-});
-/*var client = new elasticsearch.Client({
-	host: 'localhost:9200',
-	log: 'trace'
-});
-*/
-//var metadata = require('metafetch');
-const urlMetadata = require('url-metadata')
-
 const thumbnail = {
 	display: 'block',
 	padding: '4px',
@@ -31,31 +19,31 @@ const thumbimage = {
   maxWidth: '100%'
 }
 
+const urlMetadata = require('url-metadata')
+
 class Groups extends Component {
 constructor(props){
  super(props);
  this.state = {
-   results : [],
+   tedUrls : [],
    tedArr : [],
-   MusicMeta : []
+   musicArr : [],
+   ted : false,
+   music : false
  }
- this.loadMeta = this.loadMeta.bind(this);
  this.populateAll = this.populateAll.bind(this);
- this.populateAll();
+ this.updateTedState = this.updateTedState.bind(this);
+ this.checkChoices();
+ this.populateAll()
 }
 
-
-async loadMeta(url) {
-  let metaUrl = 'http://localhost:9090/' + url;
-  let meta = urlMetadata(metaUrl).then(
-    function(metadata){
-      //console.log("MetaData",metadata)
-      return metadata;
-   },
-   function (error) {
-     console.log(error)	
-   })
-  return meta;
+checkChoices = () => {       
+ if(this.props.groups.indexOf('ted') !== -1 ){
+  this.state.ted = true;
+ }
+ if(this.props.groups.indexOf('music') !== -1 ){
+  this.state.music = true; 
+ }
 }
 
 loadQueries = () => {
@@ -63,69 +51,64 @@ loadQueries = () => {
  return searches;
 }
 
-updateTedState = (tedObj) => {
- this.setState({ tedArr : [...this.state.tedArr,tedObj]})
- //console.log("tedArr",this.state.tedArr)
+loadResults = (tedStuff,musicStuff) => {
+  this.updateTedState(tedStuff);   
+  this.updateMusicState(musicStuff);
 }
 
-updateMusicState = (musicObj) => {
- this.setState({ MusicMeta : [...musicObj]})
+loadMeta = (url) => {
+  let meta = urlMetadata(url).then(
+    function(metadata){
+     //console.log("Can I have one", metadata)
+     return metadata;
+   },
+  function (error){
+   console.log(error)
+  })
+  return meta;
+}
+
+async updateTedState(tedObj){
+ let tedMetaArray  = [];
+ let tedPromiseArray = [];
+ await this.setState({ tedUrls : [...tedObj.ted]})
+//had to use ugly for loops (instead of foreach) to keep async/await in scope
+ for(let m = 0; m < 10; m++){
+   tedPromiseArray = await [...tedPromiseArray, this.loadMeta(this.state.tedUrls[m])] 
+ }
+ for(let j = 0; j < 10; j++){
+  await tedPromiseArray[j].then(function(obj){
+   this.setState({ tedArr : [...this.state.tedArr,obj]}) 
+ }.bind(this))
+ }
+}
+
+updateMusicState = (musicObj) => { 
+ this.setState({ musicArr : [...musicObj.music]})
 }
 
 async populateAll(){
- try {
-  const result = await client.search({
-    index : 'myplace',
-    type : 'text',
-    body : {
-      query : {
-	 "match" : {
-            "transcript" : this.loadQueries()
-	  }
-	}
-      }
-  });
-  const json = await result.hits.hits;
-  let hits = [];
-  let tedPromiseArray = [];
-  let tedMetaArray = [];
-  for(let i = 0; i < 10; i++){
-   hits.push(json[i]._source.url)
-   tedPromiseArray = await [...tedPromiseArray,this.loadMeta(json[i]._source.url)]
-  }
- this.setState({ results : hits });
- for(let j = 0; j < 10; j++){
-  tedPromiseArray[j].then(function(obj){
-    tedMetaArray.push(obj)
-    this.updateTedState(obj)    
-  }.bind(this))
+ let searchTerms = this.loadQueries();  
+ if(this.props.loggedIn){
+   fetch('/api/Groups', {
+     headers : {
+       "Accept" : "application/json",
+       "Content-Type" : "application/json"
+     },
+     method : 'POST',
+     body : JSON.stringify({
+       searches : searchTerms,
+       ted : this.state.ted,
+       music : this.state.music
+     }) 
+    })
+    .then(function(value){
+       return value.json()}) 
+    .then(function(data){
+       this.loadResults(data,data)
+     }.bind(this))
+   }
  }
-
- //Music Meta
- const Musicresult = await client.search({
-   index : 'music',
-   type : 'text',
-   body : {
-    query : {
-      "match" : {
-	 "lyrics" : this.loadQueries()
-      }
-    }
-  }
- });
-
-const musicjson = await Musicresult.hits.hits;
-let musichits = [];
-for(let i = 0; i < 10; i++){
- //console.log("MusicJSON", musicjson[i])
- musichits.push(musicjson[i])
-}
- this.updateMusicState(musichits) 
- } catch(error){
-   console.log(error)
-  }
-
-}
 
  render(){ 
    return(
@@ -152,7 +135,7 @@ for(let i = 0; i < 10; i++){
      <div className="container-fluid">
        <h3> MUSIC </h3>
       <div className="row flex-row flex-nowrap" style={{overflow : 'auto'}}>
-      {this.state.MusicMeta.map((elem,i) =>
+      {this.state.musicArr.map((elem,i) =>
 	<div className="col-sm-4 col-md-3" id={i} >
         <a href={"http://www.google.com/search?q=" + elem._source.artist.replace(/-/g,' ') + " " + elem._source.song.replace(/-/g,' ')} style={thumbnail} target="_blank" className="thumbnail">
 	  <figure>

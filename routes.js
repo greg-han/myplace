@@ -12,6 +12,13 @@ const flash = require('connect-flash');
 
 const port = process.env.PORT || 8080;
 
+const elasticsearch = require('elasticsearch');
+let client = new elasticsearch.Client({
+	host: 'localhost:9200'
+});
+const urlMetadata = require('url-metadata')
+
+let routeFunctions = require('./routeFunctions')
 //used as like a function, but it's really just using the above passport variable and doing it.
 //
 //mongoose.connect('mongodb://localhost/myplace');
@@ -97,7 +104,6 @@ app.post('/api/LoginPage', function(req, res, done){
 
 //This handles all searches done on the search page
 app.post('/api/SearchPage', function(req, res, done){
-   console.log("group",req.body.groups)
  if(!req.body.groups && req.body.search){
    User.findOneAndUpdate({ username : req.body.username },{ $addToSet: { searches : req.body.search.toLowerCase()}} , function(err, doc){
      if(err) return done(err);
@@ -133,8 +139,30 @@ app.post('/api/ProfilePage',function(req, res, done){
       return done(null,res.json([]))
      }
   }); 
- }
-)
+ })
+
+
+app.post('/api/Groups', async function(req, res, done){
+  let tedResult = [];
+  let musicResult = [];
+  if(req.body.music){
+  let music = await routeFunctions.populateAll(req.body.searches) 
+  .then(function(data){
+    data.forEach(function(element){
+     musicResult.push(Object.assign({},element))
+    })
+  })
+  }
+  if(req.body.ted){
+  let ted = await routeFunctions.populateSome(req.body.searches)
+  .then(function(data){
+     tedResult = [...data]
+  })
+  }
+  return done(null,res,res.json({'music' : musicResult, 'ted' : tedResult})) 
+})
+ 
+
 
 app.post('/api/ProfilePage/:word/:username',  function(req, res, done){
    let word = req.params.word 
@@ -147,10 +175,8 @@ app.post('/api/ProfilePage/:word/:username',  function(req, res, done){
        }
        else{
          return done(null,res.json(doc))
-       }
-     })
    }
-  if(req.body.group){
+   if(req.body.group){
      User.update({ username : user }, { '$pull' : { "groups" : word }}, function(err,doc){
        if(err) return done(err);
        if(doc){
@@ -160,9 +186,11 @@ app.post('/api/ProfilePage/:word/:username',  function(req, res, done){
          return done(null,res.json(doc))
        }
     })
+   }
+   }
+   )
   }
- }
-)
+})
 
 //uses default route as default get request. (REally just loads the app for reactx router).
 app.get('*', (req, res) => {

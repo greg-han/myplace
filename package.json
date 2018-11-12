@@ -4,7 +4,7 @@
   "description": "The start of my app",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"node routes.js\" \"cd client && npm start\" \"node cors.js\"",
+    "start": "concurrently \"node routes.js\" \"cd client && npm start\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gregory Han",

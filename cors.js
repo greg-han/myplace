@@ -1,3 +1,6 @@
+//in case you want to run a proxy and do corsanywhere server side, this file is here
+//add it to the conccurrently line in the package.json file
+
 var host = process.env.HOST || '0.0.0.0';
 
 var port = process.env.PORT || 9090;
