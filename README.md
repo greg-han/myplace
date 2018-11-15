@@ -2,7 +2,8 @@
 # LIVE EXAMPLE (hosted on a Digital Ocean Droplet) : http://165.227.170.174:3000/
 * You may already be logged in depending on the activty that I did last (I'm using redux persist to keep the login state for now). If not, register or login with username : Greg , password : password When you see the login dissappear from the navbar, you're in my profile. Take a look around and add/remove queries to see different results.
 * Note: this wont work if you're on a restricted network of some kind (like a school network).
-  The UI works perfectly on phones, but the Groups seem very slow to load on mobile for some reason (will fix).
+  UPDATE: It now works on all devices. Moved some chunks of logic server-sdie.
+  
 # A place where you can find your place.
 Welcome to myPlace! This is a place where you can find your place! 
 It's called myplace and not your place because when you are in myPlace this place is your place! 
