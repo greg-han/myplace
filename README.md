@@ -12,13 +12,13 @@ You can customize your experience here and find what ti is that interests and dr
  
 # This is my personal project. It will be updated soon.
 I have ideas about how the profile system is going to work out but I don't want to add them yet.
-
+Have you ever discovered a word or a subject that completely changes your life?
+Have you ever met someone that has access to the same search engines that you do, but they are able to show you information that enriches your life? Just having knowledge about a few subjects can change your perspective and your life entirely.
 The basic idea of this app will be a personal profile that is composed of your queries.
-Machine learning will the be used on the queries to find similar queries to your aggregate queries.
+Machine learning will the be used on the queries to find similar queries to your aggregate queries, but outside of your normal "cluster". I want to prevent people from being stuck in an echo chamber or "bubble". Therefore, I have to find a way to bring people clusters of information that may be related to, but outside of their normal field of vision.
 I'm not trying to build a search engine, this is different.
-
-
-The other part that i'm going to add is what will make this really unique and has almost nothing to do with questions, but will have something to do with aggregating your profile data. I purposefully did not add it in here yet, because I want to design it fully before I add the components of it. It's nothing mindblowing or anything, it's just not really out in the mainstream right now (this may be because there is no immediate commercial need for it).
+Because i'm still in school, and i'm still learning, this will probably take some time and it will be slowly updated as time goes on.
+As you can see, the idea is nothing mindblowing or anything, it's just not really out in the mainstream right now (this may be because there is no immediate commercial need for it).
 I really want people to find clusters of information that are completely outside of the scope of their current knowledge base, but would somehow be related to something that they may like.
 
 I still suck pretty bad so this will probably take a while lol (but I get just a little (sometimes a lot) better everyday), although it seems like I learn something new literally everyday when i'm working on this.
