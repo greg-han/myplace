@@ -1,4 +1,4 @@
-# myPlace
+# myPlace (Patent Pending)
 # PLEASE LOG IN WITH USERNAME: Greg and PASSWORD: password OTHERWISE YOU WON'T SEE MY SITE.
 # LIVE EXAMPLE (hosted on a Digital Ocean Droplet) : http://165.227.170.174:3000/
 * You may already be logged in depending on the activty that I did last (I'm using redux persist to keep the login state for now). If not, register or login with username : Greg , password : password When you see the login dissappear from the navbar, you're in my profile. Take a look around and add/remove queries to see different results.
