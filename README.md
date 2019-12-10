@@ -1,6 +1,7 @@
 # myPlace
-# PLEASE LOG IN WITH USERNAME: Greg and PASSWORD: password OTHERWISE YOU WON'T SEE MY SITE.
-# LIVE EXAMPLE (hosted on a Digital Ocean Droplet) : http://165.227.170.174:3000/
+# SIte is down for now, this project will be ressurrected soon.
+## This does not represent my best code anymore, I just cannot post my projects until after I graduate.
+
 * You may already be logged in depending on the activty that I did last (I'm using redux persist to keep the login state for now). If not, register or login with username : Greg , password : password When you see the login dissappear from the navbar, you're in my profile. Take a look around and add/remove queries to see different results.
 * Note: this wont work if you're on a restricted network of some kind (like a school network).
   UPDATE: It now works on all devices. Moved some chunks of logic server-sdie.
