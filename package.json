@@ -25,7 +25,7 @@
     "i": "^0.3.6",
     "logger": "0.0.1",
     "metafetch": "^1.8.2",
-    "mongodb": "^3.1.1",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.2.6",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
