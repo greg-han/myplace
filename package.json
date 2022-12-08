@@ -20,7 +20,7 @@
     "cors-anywhere": "^0.4.1",
     "ejs": "^2.6.1",
     "elasticsearch": "^15.1.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "i": "^0.3.6",
     "logger": "0.0.1",
