@@ -30,7 +30,6 @@ It's called myplace and not your place because when you are in myPlace this plac
 
 # Installation Instructions
 * git clone or download https://github.com/greg-han/myplace.git and then  cd to `myplace` and `myplace/client` then `npm install` in both directories. You may need to install more dependencies (as I did when my hard drive got wiped on accident).
-I may configure it to automatically install them, but it would only apply to my OS, and I think learning Docker would be better and easier. Before making a docker container however, I want to host this on a server.
 * cd to myplace and yarn start (now using concurrently to start the server and client in one action).
 * There are two DB options right now, one in the cloud, and one locally. Just comment/uncomment them to choose.
   If running locally, install mongodb, then `sudo mongod`, after that, `mongo` then in the mongo terminal `use myplace` after
@@ -39,7 +38,3 @@ I may configure it to automatically install them, but it would only apply to my 
   cd to `myplace` and extract the csv file from `380000-lyrics-from-metrolyrics.zip` into myplace then run `python3 csvLoader.py`. Open the python file, and change `lyrics.csv` to `transcripts.csv` and `index=music` to `index=myplace`.
   Then run `python3 csvLoader.py` again. I'll probably configure this thing to automatically load whatever datasets are in the project at any given moment.
 * Username : You should notice a username in the redux store. This is persistent throughout the program (with redux) and can be used for     w/e. Mosty for `findOne` CRUD operations throught the different components.
-
-
-## At the moment, you can use this as a tool to browse your kaggle datasets.
-Have a kaggle CSV? OR any csv at all? Message me and i'll add it to the program and make some kind of card with the metadata.
